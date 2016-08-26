@@ -1,3 +1,13 @@
 .DS_Store
 build
 node_modules
+
+topojson/mdg_adm2.json
+
+topojson/mdg_adm1.json
+
+topojson/mdg_adm3.json
+
+topojson/mdg_adm4.json
+
+topojson/mdg_adm0.json
