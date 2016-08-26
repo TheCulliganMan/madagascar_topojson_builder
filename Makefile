@@ -8,15 +8,15 @@ build/MDG_adm0.shp: build/MDG_adm.zip
 	unzip -od $(dir $@) $<
 	touch $@
 
-build/MDG_adm0.fixed.shp: build/MDG_adm0.shp
+build/MDG_adm0.fixed.json: build/MDG_adm0.shp
 	for I in 0 1 2 3 4; do \
-		ogr2ogr -f 'ESRI Shapefile' $(dir $@)mdg_adm$$I.fixed.shp build/MDG_adm$$I.shp; \
+		ogr2ogr -f GeoJSON $(dir $@)mdg_adm$$I.fixed.json build/MDG_adm$$I.shp; \
 	done;
 
-topojson/mdg_adm0.json: build/MDG_adm0.fixed.shp
+topojson/mdg_adm0.json: build/MDG_adm0.fixed.json
 	mkdir -p $(dir $@)
 	for I in 0 1 2 3 4;	do \
-	topojson -o $(dir $@)mdg_adm$$I.json --simplify=.5 -- build/mdg_adm$$I.fixed.shp; \
+	topojson -o $(dir $@)mdg_adm$$I.json -- mdg_adm$$I=build/mdg_adm$$I.fixed.json; \
 	done
 
 clean:
