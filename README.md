@@ -8,13 +8,13 @@ This program builds topojson files for the country of Madagascar.
   
   On Ubuntu:
   
-  $ `sudo add-apt-repository ppa:ubuntugis/ppa && sudo apt-get update`
+  ```sudo add-apt-repository ppa:ubuntugis/ppa && sudo apt-get update```
   
-  $ `sudo apt-get install gdal-bin`
+  ```sudo apt-get install gdal-bin```
   
   On mac:
   
-  $ `brew install gdal`
+  ```brew install gdal```
   
   
  2. Clone the repo:
