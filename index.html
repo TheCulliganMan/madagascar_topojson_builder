@@ -2,6 +2,9 @@
 <meta charset="utf-8">
 <style>
 
+h1, p {
+  font-family: futura;
+}
 path {
   fill: none;
   stroke: #000;
@@ -11,6 +14,8 @@ path {
 
 </style>
 <body>
+<p>Hello World!!!</p>
+<h1>Test Ryan</h1>
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
 <script>
@@ -23,7 +28,7 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json("topojson/mdg_adm1.json", function(error, mdg) {
+d3.json("topojson/mdg_adm2.json", function(error, mdg) {
   if (error) return console.error(error);
 
   //set up scale and translate
@@ -32,7 +37,7 @@ d3.json("topojson/mdg_adm1.json", function(error, mdg) {
   var path = d3.geo.path().projection(projection)
   projection.scale(1).translate([0,0]);
   console.log(mdg)
-  var bounds = path.bounds(topojson.feature(mdg, mdg.objects.mdg_adm1));
+  var bounds = path.bounds(topojson.feature(mdg, mdg.objects.mdg_adm2));
   var scale = .85 / Math.max((bounds[1][0] - bounds[0][0]) / width,
                              (bounds[1][1] - bounds[0][1]) / height);
   var translation = [(width - scale * (bounds[1][0] + bounds[0][0])) / 2,
@@ -42,7 +47,7 @@ d3.json("topojson/mdg_adm1.json", function(error, mdg) {
   svg.append("path")
       .datum(topojson.mesh(mdg))
       .attr("d", path);
-    
+
 });
 
 </script>
